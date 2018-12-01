@@ -32,6 +32,7 @@ namespace QLCDT.UI
             SimBUS bus = new SimBUS();
             try
             {
+                if (tts.IDSIM.Length == 0) throw new Exception("");
                 bus.AddSim(tts);
                 if (callback != null) callback();
 

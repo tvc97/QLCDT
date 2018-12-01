@@ -18,5 +18,10 @@ namespace QLCDT.BUS
         {
             return FunctionsDAO.TinhCuoc(from, to);
         }
+
+        public static void TinhHDTC(string thang, string nam)
+        {
+            FunctionsDAO.TinhHDTC(thang, nam);
+        }
     }
 }

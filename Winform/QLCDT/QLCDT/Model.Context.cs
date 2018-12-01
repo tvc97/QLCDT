@@ -12,6 +12,8 @@ namespace QLCDT
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QLCDTEntities : DbContext
     {
@@ -31,5 +33,18 @@ namespace QLCDT
         public virtual DbSet<HDTC> HDTCs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<THONGTINSIM> THONGTINSIMs { get; set; }
+    
+        public virtual ObjectResult<Nullable<int>> TINH_HDTC(Nullable<int> thang, Nullable<int> nam)
+        {
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("Thang", thang) :
+                new ObjectParameter("Thang", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("Nam", nam) :
+                new ObjectParameter("Nam", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("TINH_HDTC", thangParameter, namParameter);
+        }
     }
 }

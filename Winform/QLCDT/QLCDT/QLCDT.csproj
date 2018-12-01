@@ -278,6 +278,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\invoice.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\add.png" />
     <None Include="Resources\save.png" />

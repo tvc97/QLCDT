@@ -23,5 +23,13 @@ namespace QLCDT.DAO
                 return DContext.Database.SqlQuery<decimal>("SELECT dbo.TINHCUOC(@p0, @p1)", from, to).FirstOrDefault();
             }
         }
+
+        public static void TinhHDTC(string thang, string nam)
+        {
+            using (QLCDTEntities DContext = new QLCDTEntities())
+            {
+                DContext.TINH_HDTC(int.Parse(thang), int.Parse(nam));
+            }
+        }
     }
 }

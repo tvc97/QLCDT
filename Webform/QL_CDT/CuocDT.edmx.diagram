@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0f663d2a897f44fc8a4bdcb8a247591f" Name="Diagram1">
+        <EntityTypeShape EntityType="CuocDTModel.CHITIETSD" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuocDTModel.GIACUOC" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuocDTModel.HDDK" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuocDTModel.HDTC" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuocDTModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuocDTModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuocDTModel.THONGTINSIM" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="CuocDTModel.FK__CHITIETSD__IDSIM__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="CuocDTModel.FK__HDDK__IDKH__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="CuocDTModel.FK__HDDK__IDSIM__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="CuocDTModel.FK__HDTC__IDKH__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="CuocDTModel.FK__HDTC__IDSIM__3F466844" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
