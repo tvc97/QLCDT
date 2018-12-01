@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A21C3D5B-566B-475B-8FF6-1F8B97DC52A7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QLCDT</RootNamespace>
+    <AssemblyName>QLCDT</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BUS\ChiTietSuDungBUS.cs" />
+    <Compile Include="BUS\FunctionsBUS.cs" />
+    <Compile Include="BUS\GiaCuocBUS.cs" />
+    <Compile Include="BUS\HopDongDangKyBUS.cs" />
+    <Compile Include="BUS\KhachHangBUS.cs" />
+    <Compile Include="BUS\SimBUS.cs" />
+    <Compile Include="BUS\ThanhToanBUS.cs" />
+    <Compile Include="CHITIETSD.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\ChiTietSuDungDAO.cs" />
+    <Compile Include="DAO\FunctionsDAO.cs" />
+    <Compile Include="DAO\GiaCuocDAO.cs" />
+    <Compile Include="DAO\HopDongDangKyDAO.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
+    <Compile Include="DAO\SimDAO.cs" />
+    <Compile Include="DAO\ThanhToanDAO.cs" />
+    <Compile Include="GIACUOC.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HDDK.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HDTC.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KHACHHANG.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="THONGTINSIM.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmAddCuocGoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmAddCuocGoi.Designer.cs">
+      <DependentUpon>fmAddCuocGoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmAddHopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmAddHopDong.Designer.cs">
+      <DependentUpon>fmAddHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmAddKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmAddKhachHang.Designer.cs">
+      <DependentUpon>fmAddKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmAddSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmAddSim.Designer.cs">
+      <DependentUpon>fmAddSim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmCuocGoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmCuocGoi.Designer.cs">
+      <DependentUpon>fmCuocGoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmEditHopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmEditHopDong.Designer.cs">
+      <DependentUpon>fmEditHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmEditKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmEditKhachHang.Designer.cs">
+      <DependentUpon>fmEditKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmGiaCuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmGiaCuoc.Designer.cs">
+      <DependentUpon>fmGiaCuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmHopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmHopDong.Designer.cs">
+      <DependentUpon>fmHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmKhachHang.Designer.cs">
+      <DependentUpon>fmKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmMain.Designer.cs">
+      <DependentUpon>fmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmSim.Designer.cs">
+      <DependentUpon>fmSim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmThanhToan.Designer.cs">
+      <DependentUpon>fmThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UI\fmAddCuocGoi.resx">
+      <DependentUpon>fmAddCuocGoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmAddHopDong.resx">
+      <DependentUpon>fmAddHopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmAddKhachHang.resx">
+      <DependentUpon>fmAddKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmAddSim.resx">
+      <DependentUpon>fmAddSim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmCuocGoi.resx">
+      <DependentUpon>fmCuocGoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmEditHopDong.resx">
+      <DependentUpon>fmEditHopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmEditKhachHang.resx">
+      <DependentUpon>fmEditKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmGiaCuoc.resx">
+      <DependentUpon>fmGiaCuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmHopDong.resx">
+      <DependentUpon>fmHopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmKhachHang.resx">
+      <DependentUpon>fmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmMain.resx">
+      <DependentUpon>fmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmSim.resx">
+      <DependentUpon>fmSim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmThanhToan.resx">
+      <DependentUpon>fmThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetroFramework.txt" />
+    <Content Include="Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
