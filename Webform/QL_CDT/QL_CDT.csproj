@@ -457,7 +457,6 @@
     </Compile>
     <Compile Include="DAL\ChitietSDDAL.cs" />
     <Compile Include="DAL\ConnectionDB.cs" />
-    <Compile Include="DAL\ThongTinSimDAL.cs" />
     <Compile Include="DAL\KhachHangDAL.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -478,6 +477,18 @@
     <Compile Include="HDTC.cs">
       <DependentUpon>CuocDT.tt</DependentUpon>
     </Compile>
+    <Compile Include="hienthictsd_Result.cs">
+      <DependentUpon>CuocDT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hienthihddk_Result.cs">
+      <DependentUpon>CuocDT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hienthihdtc_Result.cs">
+      <DependentUpon>CuocDT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hienthitheoyeucau_Result.cs">
+      <DependentUpon>CuocDT.tt</DependentUpon>
+    </Compile>
     <Compile Include="hienthi_Result.cs">
       <DependentUpon>CuocDT.tt</DependentUpon>
     </Compile>
@@ -491,8 +502,6 @@
     <Compile Include="KHACHHANG.cs">
       <DependentUpon>CuocDT.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChiTietSuDung.cs" />
-    <Compile Include="Models\ThongTinSim.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -521,6 +530,9 @@
       <DependentUpon>CuocDT.tt</DependentUpon>
     </Compile>
     <Compile Include="THONGTINSIM.cs">
+      <DependentUpon>CuocDT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinhcuocwebform_Result.cs">
       <DependentUpon>CuocDT.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">

@@ -57,7 +57,6 @@
           <Property Name="CHUCVU" Type="nvarchar" MaxLength="50" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
           <Property Name="TINHTRANG" Type="bit" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -142,7 +141,16 @@
           <Parameter Name="BD" Type="bit" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="hienthi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="hienthictsd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cmnd" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="hienthihddk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cmnd" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="hienthihdtc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cmnd" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="hienthitheoyeucau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="sdt" Type="varchar" Mode="In" />
           <Parameter Name="Ngaybd" Type="datetime" Mode="In" />
           <Parameter Name="ngaykt" Type="datetime" Mode="In" />
@@ -184,6 +192,11 @@
         <Function Name="TINHCUOC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
           <Parameter Name="TGBD" Type="datetime" Mode="In" />
           <Parameter Name="TGKT" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Tinhcuocwebform" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+          <Parameter Name="Ngaybd" Type="datetime" Mode="In" />
+          <Parameter Name="ngaykt" Type="datetime" Mode="In" />
         </Function>
         <EntityContainer Name="CuocDTModelStoreContainer">
           <EntitySet Name="CHITIETSD" EntityType="Self.CHITIETSD" Schema="dbo" store:Type="Tables" />
@@ -277,7 +290,6 @@
           <Property Name="TINHTRANG" Type="Boolean" />
           <NavigationProperty Name="HDDKs" Relationship="Self.FK__HDDK__IDKH__3B75D760" FromRole="KHACHHANG" ToRole="HDDK" />
           <NavigationProperty Name="HDTCs" Relationship="Self.FK__HDTC__IDKH__403A8C7D" FromRole="KHACHHANG" ToRole="HDTC" />
-          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -360,7 +372,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CuocDTEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CuocDTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CHITIETSDs" EntityType="Self.CHITIETSD" />
           <EntitySet Name="GIACUOCs" EntityType="Self.GIACUOC" />
           <EntitySet Name="HDDKs" EntityType="Self.HDDK" />
@@ -388,6 +400,11 @@
             <End Role="THONGTINSIM" EntitySet="THONGTINSIMs" />
             <End Role="HDTC" EntitySet="HDTCs" />
           </AssociationSet>
+          <FunctionImport Name="hienthi" ReturnType="Collection(CuocDTModel.hienthi_Result)">
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="Ngaybd" Mode="In" Type="DateTime" />
+            <Parameter Name="ngaykt" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -418,12 +435,31 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="hienthi" ReturnType="Collection(CuocDTModel.hienthi_Result)">
+          <FunctionImport Name="hienthictsd" ReturnType="Collection(CuocDTModel.hienthictsd_Result)">
+          <Parameter Name="cmnd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="hienthihdtc" ReturnType="Collection(CuocDTModel.hienthihdtc_Result)">
+          <Parameter Name="cmnd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="hienthihddk" ReturnType="Collection(CuocDTModel.hienthihddk_Result)">
+          <Parameter Name="cmnd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Tinhcuocwebform" ReturnType="Collection(CuocDTModel.Tinhcuocwebform_Result)">
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="Ngaybd" Mode="In" Type="DateTime" />
+            <Parameter Name="ngaykt" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="hienthitheoyeucau" ReturnType="Collection(CuocDTModel.hienthitheoyeucau_Result)">
             <Parameter Name="sdt" Mode="In" Type="String" />
             <Parameter Name="Ngaybd" Mode="In" Type="DateTime" />
             <Parameter Name="ngaykt" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="hienthi_Result">
+          <Property Type="String" Name="Số_Điện_Thoại" Nullable="false" MaxLength="11" />
+          <Property Type="DateTime" Name="Bắt_Đầu" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Kết_Thúc" Nullable="false" Precision="23" />
+        </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -435,17 +471,47 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="hienthi_Result">
+        <ComplexType Name="hienthictsd_Result">
+          <Property Type="String" Name="IDSIM" Nullable="false" MaxLength="11" />
+          <Property Type="DateTime" Name="TGBD" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="TGKT" Nullable="false" Precision="23" />
+          <Property Type="String" Name="HọTên" Nullable="false" MaxLength="100" />
+          <Property Type="Double" Name="SửDụng_Phút" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="hienthihdtc_Result">
+          <Property Type="String" Name="IDSIM" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="THANHTOAN" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Họ_Tên" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Địa_Chỉ" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Tháng" Nullable="true" />
+          <Property Type="Int32" Name="Năm" Nullable="true" />
+          <Property Type="Decimal" Name="Tổng_Tiền" Nullable="false" Precision="19" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="hienthihddk_Result">
+          <Property Type="String" Name="CMND" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="TINHTRANG" Nullable="false" MaxLength="12" />
+          <Property Type="String" Name="IDSIM" Nullable="false" MaxLength="11" />
+          <Property Type="Decimal" Name="CUOCDK" Nullable="false" Precision="19" Scale="3" />
+          <Property Type="String" Name="Họ_Tên" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Địa_Chỉ" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Nghề_Nghiệp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Chức_Vụ" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Tinhcuocwebform_Result">
+          <Property Type="Decimal" Name="Tổng_Giá" Nullable="true" Precision="38" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="hienthitheoyeucau_Result">
           <Property Type="String" Name="Số_Điện_Thoại" Nullable="false" MaxLength="11" />
           <Property Type="DateTime" Name="Bắt_Đầu" Nullable="false" Precision="23" />
           <Property Type="DateTime" Name="Kết_Thúc" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Cước_phí" Nullable="true" Precision="19" Scale="3" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CuocDTModelStoreContainer" CdmEntityContainer="CuocDTEntities1">
+        <EntityContainerMapping StorageEntityContainer="CuocDTModelStoreContainer" CdmEntityContainer="CuocDTEntities">
           <EntitySetMapping Name="CHITIETSDs">
             <EntityTypeMapping TypeName="CuocDTModel.CHITIETSD">
               <MappingFragment StoreEntitySet="CHITIETSD">
@@ -494,7 +560,6 @@
           <EntitySetMapping Name="KHACHHANGs">
             <EntityTypeMapping TypeName="CuocDTModel.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TENKH" ColumnName="TENKH" />
                 <ScalarProperty Name="CMND" ColumnName="CMND" />
@@ -549,12 +614,58 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CuocDTModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CuocDTModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="hienthi" FunctionName="CuocDTModel.Store.hienthi">
+          <FunctionImportMapping FunctionImportName="hienthictsd" FunctionName="CuocDTModel.Store.hienthictsd">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="CuocDTModel.hienthi_Result">
+              <ComplexTypeMapping TypeName="CuocDTModel.hienthictsd_Result">
+                <ScalarProperty Name="IDSIM" ColumnName="IDSIM" />
+                <ScalarProperty Name="TGBD" ColumnName="TGBD" />
+                <ScalarProperty Name="TGKT" ColumnName="TGKT" />
+                <ScalarProperty Name="HọTên" ColumnName="HọTên" />
+                <ScalarProperty Name="SửDụng_Phút" ColumnName="SửDụng/Phút" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="hienthihdtc" FunctionName="CuocDTModel.Store.hienthihdtc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CuocDTModel.hienthihdtc_Result">
+                <ScalarProperty Name="IDSIM" ColumnName="IDSIM" />
+                <ScalarProperty Name="THANHTOAN" ColumnName="THANHTOAN" />
+                <ScalarProperty Name="Họ_Tên" ColumnName="Họ Tên" />
+                <ScalarProperty Name="Địa_Chỉ" ColumnName="Địa Chỉ" />
+                <ScalarProperty Name="Tháng" ColumnName="Tháng" />
+                <ScalarProperty Name="Năm" ColumnName="Năm" />
+                <ScalarProperty Name="Tổng_Tiền" ColumnName="Tổng Tiền" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="hienthihddk" FunctionName="CuocDTModel.Store.hienthihddk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CuocDTModel.hienthihddk_Result">
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+                <ScalarProperty Name="IDSIM" ColumnName="IDSIM" />
+                <ScalarProperty Name="CUOCDK" ColumnName="CUOCDK" />
+                <ScalarProperty Name="Họ_Tên" ColumnName="Họ Tên" />
+                <ScalarProperty Name="Địa_Chỉ" ColumnName="Địa Chỉ" />
+                <ScalarProperty Name="Nghề_Nghiệp" ColumnName="Nghề Nghiệp" />
+                <ScalarProperty Name="Chức_Vụ" ColumnName="Chức Vụ" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Tinhcuocwebform" FunctionName="CuocDTModel.Store.Tinhcuocwebform">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CuocDTModel.Tinhcuocwebform_Result">
+                <ScalarProperty Name="Tổng_Giá" ColumnName="Tổng Giá" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="hienthitheoyeucau" FunctionName="CuocDTModel.Store.hienthitheoyeucau">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CuocDTModel.hienthitheoyeucau_Result">
                 <ScalarProperty Name="Số_Điện_Thoại" ColumnName="Số Điện Thoại" />
                 <ScalarProperty Name="Bắt_Đầu" ColumnName="Bắt Đầu" />
                 <ScalarProperty Name="Kết_Thúc" ColumnName="Kết Thúc" />
+                <ScalarProperty Name="Cước_phí" ColumnName="Cước phí" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

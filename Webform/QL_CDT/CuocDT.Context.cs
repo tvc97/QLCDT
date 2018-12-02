@@ -15,10 +15,10 @@ namespace QL_CDT
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class CuocDTEntities1 : DbContext
+    public partial class CuocDTEntities : DbContext
     {
-        public CuocDTEntities1()
-            : base("name=CuocDTEntities1")
+        public CuocDTEntities()
+            : base("name=CuocDTEntities")
         {
         }
     
@@ -34,6 +34,23 @@ namespace QL_CDT
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<THONGTINSIM> THONGTINSIMs { get; set; }
+    
+        public virtual ObjectResult<hienthi_Result> hienthi(string sdt, Nullable<System.DateTime> ngaybd, Nullable<System.DateTime> ngaykt)
+        {
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var ngaybdParameter = ngaybd.HasValue ?
+                new ObjectParameter("Ngaybd", ngaybd) :
+                new ObjectParameter("Ngaybd", typeof(System.DateTime));
+    
+            var ngayktParameter = ngaykt.HasValue ?
+                new ObjectParameter("ngaykt", ngaykt) :
+                new ObjectParameter("ngaykt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hienthi_Result>("hienthi", sdtParameter, ngaybdParameter, ngayktParameter);
+        }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -138,7 +155,34 @@ namespace QL_CDT
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual ObjectResult<hienthi_Result> hienthi(string sdt, Nullable<System.DateTime> ngaybd, Nullable<System.DateTime> ngaykt)
+        public virtual ObjectResult<hienthictsd_Result> hienthictsd(string cmnd)
+        {
+            var cmndParameter = cmnd != null ?
+                new ObjectParameter("cmnd", cmnd) :
+                new ObjectParameter("cmnd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hienthictsd_Result>("hienthictsd", cmndParameter);
+        }
+    
+        public virtual ObjectResult<hienthihdtc_Result> hienthihdtc(string cmnd)
+        {
+            var cmndParameter = cmnd != null ?
+                new ObjectParameter("cmnd", cmnd) :
+                new ObjectParameter("cmnd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hienthihdtc_Result>("hienthihdtc", cmndParameter);
+        }
+    
+        public virtual ObjectResult<hienthihddk_Result> hienthihddk(string cmnd)
+        {
+            var cmndParameter = cmnd != null ?
+                new ObjectParameter("cmnd", cmnd) :
+                new ObjectParameter("cmnd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hienthihddk_Result>("hienthihddk", cmndParameter);
+        }
+    
+        public virtual ObjectResult<Tinhcuocwebform_Result> Tinhcuocwebform(string sdt, Nullable<System.DateTime> ngaybd, Nullable<System.DateTime> ngaykt)
         {
             var sdtParameter = sdt != null ?
                 new ObjectParameter("sdt", sdt) :
@@ -152,7 +196,24 @@ namespace QL_CDT
                 new ObjectParameter("ngaykt", ngaykt) :
                 new ObjectParameter("ngaykt", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hienthi_Result>("hienthi", sdtParameter, ngaybdParameter, ngayktParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tinhcuocwebform_Result>("Tinhcuocwebform", sdtParameter, ngaybdParameter, ngayktParameter);
+        }
+    
+        public virtual ObjectResult<hienthitheoyeucau_Result> hienthitheoyeucau(string sdt, Nullable<System.DateTime> ngaybd, Nullable<System.DateTime> ngaykt)
+        {
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var ngaybdParameter = ngaybd.HasValue ?
+                new ObjectParameter("Ngaybd", ngaybd) :
+                new ObjectParameter("Ngaybd", typeof(System.DateTime));
+    
+            var ngayktParameter = ngaykt.HasValue ?
+                new ObjectParameter("ngaykt", ngaykt) :
+                new ObjectParameter("ngaykt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hienthitheoyeucau_Result>("hienthitheoyeucau", sdtParameter, ngaybdParameter, ngayktParameter);
         }
     }
 }

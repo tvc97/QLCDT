@@ -8,7 +8,7 @@ namespace QL_CDT.Models
     public class KhachHang
     {
 
-        public int ID { get; set; }
+        public string MaKH { get; set; }
         public string TenKH { get; set; }
         public string CMND { get; set; }
         public string NGHENGHIEP { get; set; }

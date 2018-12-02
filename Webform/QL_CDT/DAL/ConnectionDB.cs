@@ -11,7 +11,7 @@ namespace QL_CDT.DAL
     {       
         public static SqlConnection getConnection()
         {
-            string StringConnection = "Data Source=DESKTOP-DJ9KR3A;Initial Catalog=CuocDT;Integrated Security=True";
+            string StringConnection = "Data Source=DESKTOP-8K4JLBT;Initial Catalog=QLCDT;Integrated Security=True";
             SqlConnection conn = new SqlConnection(StringConnection);
             return conn;
         }

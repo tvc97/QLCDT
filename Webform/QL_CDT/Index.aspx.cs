@@ -27,66 +27,48 @@ namespace QL_CDT
 
         protected void btn_find_Click(object sender, EventArgs e)
         {
-            var sdt = TextBox1.Text;
-            CuocDTEntities1 db = new CuocDTEntities1();
-            var result_kh = from s in db.THONGTINSIMs
-                            join sa in db.HDDKs
-                            on s.IDSIM equals sa.IDSIM
-                            where s.SDT == sdt
-                            select s;
-            GridView2.DataSource = result_kh.ToList();
+            string cmnd_find = nhapCMND.Text;
+            CuocDTEntities db = new CuocDTEntities();
+            var rs_ctsd = db.hienthictsd(cmnd_find);
+            GridView2.DataSource = rs_ctsd.ToList();
             GridView2.DataBind();
-           
+            var rs_hdtc = db.hienthihdtc(cmnd_find);
+            GridView3.DataSource = rs_hdtc.ToList();
+            GridView3.DataBind();
+            var rs_hddk = db.hienthihddk(cmnd_find);
+            GridView1.DataSource = rs_hddk.ToList();
+            GridView1.DataBind();
         }
+
         protected void btn_find_tracuoc_Click(object sender, EventArgs e)
         {
-            //var sdt = TextBox1.Text;
-            //var nbd = day_start.Text;
-            //var nkt = day_end.Text;
-            //CuocDTEntities1 db = new CuocDTEntities1();
-            //var rs_sp1 = db.TinhCuoc(sdt,Convert.ToDateTime(ngaybd), Convert.ToDateTime(ngaykt));
-            //GridView2.DataSource = rs_sp1.ToList();
-            //GridView2.DataBind();
-
-
-            var sdt = TextBox2.Text;
-            ChitietSDDAL tb = new ChitietSDDAL();
-            DataTable dbtb = new DataTable();
-            dbtb = tb.FindDB(sdt);
-            tb_KhachHang.DataSource = dbtb;
-            tb_KhachHang.DataBind();
-
-            DataTable db_sum = new DataTable();
-            db_sum = tb.All_sum(sdt);
-            id_tonggiacuoc.Text = db_sum.Rows[0][0].ToString();
+            CuocDTEntities db = new CuocDTEntities();
+            var sdt = nhapSDT_tracuoc.Text;
+            var ngaybd = day_start.Text;
+            var ngaykt = day_end.Text;
+            var rs_htyc = db.hienthitheoyeucau(sdt, Convert.ToDateTime(ngaybd), Convert.ToDateTime(ngaykt));
+            GridView4.DataSource = rs_htyc.ToList();
+            GridView4.DataBind();
+            var rs_tc = db.Tinhcuocwebform(sdt, Convert.ToDateTime(ngaybd), Convert.ToDateTime(ngaykt)).FirstOrDefault();
+           /* GridView5.DataSource = rs_tc.ToList();
+            GridView5.DataBind();
+            Tinhcuocwebform_Result rs = rs_tc.FirstOrDefault();*/
+           TextCuoc.Text = rs_tc.Tổng_Giá.Value.ToString();
+            
         }
-
         protected void btn_display_Click(object sender, EventArgs e)
         {
-            var sdt = TextBox1.Text;
-            var nbd = day_start.Text;
-            var nkt = day_end.Text;
-            CuocDTEntities1 db = new CuocDTEntities1();
-            var rs_sp = db.hienthi(sdt, Convert.ToDateTime(ngaybd), Convert.ToDateTime(ngaykt));
-            GridView2.DataSource = rs_sp.ToList();
-            GridView2.DataBind();
+           
 
 
-            //    string tgbd = "2018-05-01";
-            //    string tgkt = "2018-07-30";
-            //    ChitietSDDAL tb = new ChitietSDDAL();
-            //    DataTable dbtb = new DataTable();
-            //    dbtb = tb.Select_date(tgbd, tgkt);
-            //    tb_KhachHang.DataSource = dbtb;
-            //    tb_KhachHang.DataBind();
         }
 
-        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        protected void tongcuoc_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
 
         }

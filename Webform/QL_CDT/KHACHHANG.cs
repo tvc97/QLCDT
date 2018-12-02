@@ -28,7 +28,6 @@ namespace QL_CDT
         public string CHUCVU { get; set; }
         public string DIACHI { get; set; }
         public Nullable<bool> TINHTRANG { get; set; }
-        public string EMAIL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HDDK> HDDKs { get; set; }

@@ -25,37 +25,40 @@ namespace QL_CDT.DAL
         {            
             SqlConnection conn = ConnectionDB.getConnection();
             conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM CHITIETSD where IDSIM="+sdt_find, conn);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM CHITIETSD WHERE IDSIM='"+ sdt_find+"'", conn);
             DataTable tb = new DataTable();
             da.Fill(tb);
             conn.Close();
             return tb;
         }
 
-        internal DataTable FindDB(object sdt_find)
-        {
-            throw new NotImplementedException();
-        }
-        public DataTable Select_date(string ngaybd, string ngaykt)
+
+        public DataTable Select_date(string ngaybd, string ngaykt, string idsim)
         {
             SqlConnection conn = ConnectionDB.getConnection();
             conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM CHITIETSD WHERE TGKT <= '"+ngaykt+"' AND '"+ngaybd+"'<= TGBD" , conn);            
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM CHITIETSD WHERE TGKT <= '"+ngaykt+"' AND '"+ngaybd+"'<= TGBD AND IDSIM='"+idsim+"'" , conn);            
             DataTable tb = new DataTable();
             da.Fill(tb);
             conn.Close();   
             return tb;
         }
 
-        internal DataTable Select_date(CalendarExtender day_start, CalendarExtender day_end)
-        {
-            throw new NotImplementedException();
-        }
         public DataTable All_sum(string idsim)
         {
             SqlConnection conn = ConnectionDB.getConnection();
             conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select SUM(CUOCPHI* SOPHUTSD)  as TONGCUOCPHI from CHITIETSD where IDSIM = '" + idsim + "' group by IDSIM", conn);
+            SqlDataAdapter da = new SqlDataAdapter("select SUM (CUOCPHI)  as TONGCUOCPHI from CHITIETSD where IDSIM = '"+ idsim + "'", conn);
+            DataTable tb = new DataTable();
+            da.Fill(tb);
+            conn.Close();
+            return tb;
+        }
+        public DataTable Display_sum(string ngaybd, string ngaykt, string idsim)
+        {
+            SqlConnection conn = ConnectionDB.getConnection();
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT SUM(CUOCPHI)  as TONGCUOCPHI from CHITIETSD where IDSIM='"+idsim+"' AND  TGBD >= '"+ ngaybd + "' AND TGKT <= '"+ ngaykt + "'", conn);
             DataTable tb = new DataTable();
             da.Fill(tb);
             conn.Close();
