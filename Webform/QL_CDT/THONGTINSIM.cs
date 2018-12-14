@@ -11,7 +11,8 @@ namespace QL_CDT
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class THONGTINSIM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,15 +22,21 @@ namespace QL_CDT
             this.HDDKs = new HashSet<HDDK>();
             this.HDTCs = new HashSet<HDTC>();
         }
-    
+
+        [DisplayName("ID SIM")]
         public string IDSIM { get; set; }
+        [DisplayName("SDT")]
         public string SDT { get; set; }
+        [Browsable(false)]
         public Nullable<bool> TINHTRANG { get; set; }
-    
+
+        [Browsable(false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETSD> CHITIETSDs { get; set; }
+        [Browsable(false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HDDK> HDDKs { get; set; }
+        [Browsable(false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HDTC> HDTCs { get; set; }
     }

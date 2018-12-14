@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLCDT.DAO
+namespace QL_CDT.DAO
 {
     public class KhachHangDAO
     {
-        QLCDTEntities db = new QLCDTEntities();
+        QL_CDTEntities db = new QL_CDTEntities();
         KHACHHANG kh = new KHACHHANG();
 
         public static List<KHACHHANG> LoadKH()
         {
-            QLCDTEntities db = new QLCDTEntities();
+            QL_CDTEntities db = new QL_CDTEntities();
             var result = (
                 from khdb in db.KHACHHANGs
                 select new

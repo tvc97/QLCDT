@@ -32,6 +32,8 @@
             this.tEdit = new MetroFramework.Controls.MetroTile();
             this.tAdd = new MetroFramework.Controls.MetroTile();
             this.gvHDDK = new System.Windows.Forms.DataGridView();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.tbKeyword = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvHDDK)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,11 +94,31 @@
             this.gvHDDK.Size = new System.Drawing.Size(774, 310);
             this.gvHDDK.TabIndex = 6;
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(417, 146);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(130, 19);
+            this.metroLabel1.TabIndex = 8;
+            this.metroLabel1.Text = "Từ khóa tìm kiếm:";
+            // 
+            // tbKeyword
+            // 
+            this.tbKeyword.Location = new System.Drawing.Point(553, 142);
+            this.tbKeyword.Name = "tbKeyword";
+            this.tbKeyword.Size = new System.Drawing.Size(254, 23);
+            this.tbKeyword.TabIndex = 7;
+            this.tbKeyword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbKeyword_KeyUp);
+            // 
             // fmHopDong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 546);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.tbKeyword);
             this.Controls.Add(this.gvHDDK);
             this.Controls.Add(this.tDelete);
             this.Controls.Add(this.tEdit);
@@ -105,6 +127,7 @@
             this.Text = "Danh sách hợp đồng đăng ký";
             ((System.ComponentModel.ISupportInitialize)(this.gvHDDK)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -113,5 +136,7 @@
         private MetroFramework.Controls.MetroTile tEdit;
         private MetroFramework.Controls.MetroTile tAdd;
         private System.Windows.Forms.DataGridView gvHDDK;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTextBox tbKeyword;
     }
 }

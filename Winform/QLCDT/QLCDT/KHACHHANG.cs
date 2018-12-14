@@ -26,6 +26,8 @@ namespace QLCDT
         public int ID { get; set; }
         [DisplayName("Tên khách hàng")]
         public string TENKH { get; set; }
+        [DisplayName("Email")]
+        public string EMAIL { get; set; }
         [DisplayName("CMND")]
         public string CMND { get; set; }
         [DisplayName("Nghề nghiệp")]
@@ -48,5 +50,6 @@ namespace QLCDT
         {
             return TENKH;
         }
+    
     }
 }

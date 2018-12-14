@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0cf303c317c8422d9045cd99ae9a819c" Name="Diagram1">
+        <EntityTypeShape EntityType="QL_CDTModel.CHITIETSD" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_CDTModel.GIACUOC" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_CDTModel.HDDK" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_CDTModel.HDTC" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_CDTModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_CDTModel.THONGTINSIM" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="QL_CDTModel.FK__CHITIETSD__IDSIM__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_CDTModel.FK__HDDK__IDKH__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_CDTModel.FK__HDDK__IDSIM__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_CDTModel.FK__HDTC__IDKH__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_CDTModel.FK__HDTC__IDSIM__7D439ABD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

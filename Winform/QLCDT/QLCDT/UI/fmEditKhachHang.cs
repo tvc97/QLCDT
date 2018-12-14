@@ -24,6 +24,7 @@ namespace QLCDT.UI
 
             tbTen.Text = kh.TENKH;
             tbCMND.Text = kh.CMND;
+            tbEmail.Text = kh.EMAIL;
             tbNgheNghiep.Text = kh.NGHENGHIEP;
             tbChucVu.Text = kh.CHUCVU;
             tbDiaChi.Text = kh.DIACHI;
@@ -33,11 +34,19 @@ namespace QLCDT.UI
         {
             kh.TENKH = tbTen.Text;
             kh.CMND = tbCMND.Text;
+            kh.EMAIL = tbEmail.Text;
             kh.NGHENGHIEP = tbNgheNghiep.Text;
             kh.CHUCVU = tbChucVu.Text;
             kh.DIACHI = tbDiaChi.Text;
 
             KhachHangBUS bus = new KhachHangBUS();
+
+            if (!bus.validate(kh))
+            {
+                MessageBox.Show("Dữ liệu khách hàng không đúng", "Thông báo!");
+                return;
+            }
+
             try
             {
                 bus.EditKH(kh);

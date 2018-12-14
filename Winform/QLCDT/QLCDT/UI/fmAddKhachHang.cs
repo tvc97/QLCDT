@@ -39,7 +39,14 @@ namespace QLCDT.UI
             kh.NGHENGHIEP = tbNgheNghiep.Text;
             kh.CHUCVU = tbChucVu.Text;
             kh.DIACHI = tbDiaChi.Text;
+            kh.EMAIL = tbEmail.Text;
             kh.TINHTRANG = true;
+
+            if(!bus.validate(kh))
+            {
+                MessageBox.Show("Dữ liệu khách hàng không đúng", "Thông báo!");
+                return;
+            }
 
             try
             {
@@ -53,5 +60,6 @@ namespace QLCDT.UI
                 MessageBox.Show("Không thêm được", "Thông báo!");
             }
         }
+
     }
 }

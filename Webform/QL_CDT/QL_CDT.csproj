@@ -216,16 +216,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Account\Web.config" />
     <Content Include="ApplicationInsights.config" />
-    <Content Include="CuocDT.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CuocDT.edmx</DependentUpon>
-      <LastGenOutput>CuocDT.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CuocDT.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CuocDT.edmx</DependentUpon>
-      <LastGenOutput>CuocDT.cs</LastGenOutput>
-    </Content>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -241,12 +231,12 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <EntityDeploy Include="CuocDT.edmx">
+    <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CuocDT.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="CuocDT.edmx.diagram">
-      <DependentUpon>CuocDT.edmx</DependentUpon>
+    <Content Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="images\banner1.png" />
@@ -261,7 +251,16 @@
     <Content Include="images\sctv.png" />
     <Content Include="images\viettel.jpg" />
     <Content Include="images\vnpt.jpg" />
-    <Content Include="Index.aspx" />
+    <Content Include="Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -430,8 +429,15 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BUS\ChiTietSuDungBUS.cs" />
+    <Compile Include="BUS\FunctionsBUS.cs" />
+    <Compile Include="BUS\GiaCuocBUS.cs" />
+    <Compile Include="BUS\HopDongDangKyBUS.cs" />
+    <Compile Include="BUS\KhachHangBUS.cs" />
+    <Compile Include="BUS\SimBUS.cs" />
+    <Compile Include="BUS\ThanhToanBUS.cs" />
     <Compile Include="CHITIETSD.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -440,24 +446,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CuocDT.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CuocDT.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CuocDT.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CuocDT.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CuocDT.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\ChitietSDDAL.cs" />
-    <Compile Include="DAL\ConnectionDB.cs" />
-    <Compile Include="DAL\KhachHangDAL.cs" />
+    <Compile Include="DAO\ChiTietSuDungDAO.cs" />
+    <Compile Include="DAO\FunctionsDAO.cs" />
+    <Compile Include="DAO\GiaCuocDAO.cs" />
+    <Compile Include="DAO\HopDongDangKyDAO.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
+    <Compile Include="DAO\SimDAO.cs" />
+    <Compile Include="DAO\ThanhToanDAO.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -466,41 +461,34 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="GIACUOC.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HDDK.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="HDTC.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="hienthictsd_Result.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="hienthihddk_Result.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="hienthihdtc_Result.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="hienthitheoyeucau_Result.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="hienthi_Result.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="KHACHHANG.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -519,21 +507,9 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
     <Compile Include="THONGTINSIM.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinhcuocwebform_Result.cs">
-      <DependentUpon>CuocDT.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

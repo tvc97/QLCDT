@@ -32,6 +32,8 @@
             this.tEdit = new MetroFramework.Controls.MetroTile();
             this.tDelete = new MetroFramework.Controls.MetroTile();
             this.gvKhachHang = new System.Windows.Forms.DataGridView();
+            this.tbKeyword = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gvKhachHang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,11 +95,31 @@
             this.gvKhachHang.TabIndex = 1;
             this.gvKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvKhachHang_CellClick);
             // 
+            // tbKeyword
+            // 
+            this.tbKeyword.Location = new System.Drawing.Point(973, 142);
+            this.tbKeyword.Name = "tbKeyword";
+            this.tbKeyword.Size = new System.Drawing.Size(254, 23);
+            this.tbKeyword.TabIndex = 2;
+            this.tbKeyword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbKeyword_KeyUp);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(837, 146);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(130, 19);
+            this.metroLabel1.TabIndex = 3;
+            this.metroLabel1.Text = "Từ khóa tìm kiếm:";
+            // 
             // fmKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 568);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.tbKeyword);
             this.Controls.Add(this.gvKhachHang);
             this.Controls.Add(this.tDelete);
             this.Controls.Add(this.tEdit);
@@ -107,6 +129,7 @@
             this.Load += new System.EventHandler(this.fmKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvKhachHang)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -116,5 +139,7 @@
         private MetroFramework.Controls.MetroTile tEdit;
         private MetroFramework.Controls.MetroTile tDelete;
         private System.Windows.Forms.DataGridView gvKhachHang;
+        private MetroFramework.Controls.MetroTextBox tbKeyword;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

@@ -28,7 +28,17 @@ namespace QLCDT.UI
 
         public void LoadKH()
         {
-            gvKhachHang.DataSource = KhachHangBUS.LoadKH();
+            string keyword = tbKeyword.Text;
+            gvKhachHang.DataSource = KhachHangBUS.LoadKH().Where(x =>
+                keyword.Length == 0 ||
+                x.CMND.Contains(keyword) ||
+                x.NGHENGHIEP.Contains(keyword) ||
+                x.TENKH.Contains(keyword) ||
+                x.EMAIL.Contains(keyword) ||
+                x.NGHENGHIEP.Contains(keyword) ||
+                x.CHUCVU.Contains(keyword) ||
+                x.DIACHI.Contains(keyword)
+            ).ToList();
         }
 
         private void tAdd_Click(object sender, EventArgs e)
@@ -86,6 +96,11 @@ namespace QLCDT.UI
                 Form fEdit = new fmEditKhachHang(khBUS.GetByID(selectedID), LoadKH);
                 fEdit.Show();
             }
+        }
+
+        private void tbKeyword_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadKH();
         }
     }
 }

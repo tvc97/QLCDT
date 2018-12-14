@@ -25,7 +25,15 @@ namespace QLCDT.UI
 
         public void LoadHDDK()
         {
-            gvHDDK.DataSource = HopDongDangKyBUS.LoadHDDK();
+            string keyword = tbKeyword.Text;
+
+            gvHDDK.DataSource = HopDongDangKyBUS.LoadHDDK().Where(x =>
+                keyword.Length == 0 ||
+                x.KHACHHANG.ToString().Contains(keyword) ||
+                x.IDSIM.Contains(keyword) ||
+                x.NgayBD.Contains(keyword) ||
+                x.NgayKT.Contains(keyword)
+            ).ToList();
         }
 
         private void tAdd_Click(object sender, EventArgs e)
@@ -79,6 +87,11 @@ namespace QLCDT.UI
                     }
                 }
             }
+        }
+
+        private void tbKeyword_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadHDDK();
         }
     }
 }

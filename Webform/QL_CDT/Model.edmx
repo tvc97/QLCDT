@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLCDTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QL_CDTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHITIETSD">
           <Key>
             <PropertyRef Name="ID" />
@@ -145,7 +145,7 @@
           <Parameter Name="TGBD" Type="datetime" Mode="In" />
           <Parameter Name="TGKT" Type="datetime" Mode="In" />
         </Function>
-        <EntityContainer Name="QLCDTModelStoreContainer">
+        <EntityContainer Name="QL_CDTModelStoreContainer">
           <EntitySet Name="CHITIETSD" EntityType="Self.CHITIETSD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GIACUOC" EntityType="Self.GIACUOC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HDDK" EntityType="Self.HDDK" Schema="dbo" store:Type="Tables" />
@@ -173,10 +173,11 @@
             <End Role="HDTC" EntitySet="HDTC" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QLCDTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QL_CDTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CHITIETSD">
           <Key>
             <PropertyRef Name="ID" />
@@ -206,10 +207,10 @@
           <Property Name="IDSIM" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDKH" Type="Int32" Nullable="false" />
           <Property Name="CUOCDK" Type="Decimal" Precision="19" Scale="3" Nullable="false" />
+          <Property Name="NGAYBD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NGAYKT" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HDDK__IDKH__797309D9" FromRole="HDDK" ToRole="KHACHHANG" />
           <NavigationProperty Name="THONGTINSIM" Relationship="Self.FK__HDDK__IDSIM__787EE5A0" FromRole="HDDK" ToRole="THONGTINSIM" />
-          <Property Name="NGAYBD" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="NGAYKT" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityType Name="HDTC">
           <Key>
@@ -236,9 +237,9 @@
           <Property Name="CHUCVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TINHTRANG" Type="Boolean" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HDDKs" Relationship="Self.FK__HDDK__IDKH__797309D9" FromRole="KHACHHANG" ToRole="HDDK" />
           <NavigationProperty Name="HDTCs" Relationship="Self.FK__HDTC__IDKH__7E37BEF6" FromRole="KHACHHANG" ToRole="HDTC" />
-          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="THONGTINSIM">
           <Key>
@@ -311,7 +312,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLCDTEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QL_CDTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CHITIETSDs" EntityType="Self.CHITIETSD" />
           <EntitySet Name="GIACUOCs" EntityType="Self.GIACUOC" />
           <EntitySet Name="HDDKs" EntityType="Self.HDDK" />
@@ -348,9 +349,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLCDTModelStoreContainer" CdmEntityContainer="QLCDTEntities">
+        <EntityContainerMapping StorageEntityContainer="QL_CDTModelStoreContainer" CdmEntityContainer="QL_CDTEntities">
           <EntitySetMapping Name="CHITIETSDs">
-            <EntityTypeMapping TypeName="QLCDTModel.CHITIETSD">
+            <EntityTypeMapping TypeName="QL_CDTModel.CHITIETSD">
               <MappingFragment StoreEntitySet="CHITIETSD">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDSIM" ColumnName="IDSIM" />
@@ -362,7 +363,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GIACUOCs">
-            <EntityTypeMapping TypeName="QLCDTModel.GIACUOC">
+            <EntityTypeMapping TypeName="QL_CDTModel.GIACUOC">
               <MappingFragment StoreEntitySet="GIACUOC">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TGBD" ColumnName="TGBD" />
@@ -372,19 +373,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HDDKs">
-            <EntityTypeMapping TypeName="QLCDTModel.HDDK">
+            <EntityTypeMapping TypeName="QL_CDTModel.HDDK">
               <MappingFragment StoreEntitySet="HDDK">
-                <ScalarProperty Name="NGAYKT" ColumnName="NGAYKT" />
-                <ScalarProperty Name="NGAYBD" ColumnName="NGAYBD" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDSIM" ColumnName="IDSIM" />
                 <ScalarProperty Name="IDKH" ColumnName="IDKH" />
                 <ScalarProperty Name="CUOCDK" ColumnName="CUOCDK" />
+                <ScalarProperty Name="NGAYBD" ColumnName="NGAYBD" />
+                <ScalarProperty Name="NGAYKT" ColumnName="NGAYKT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HDTCs">
-            <EntityTypeMapping TypeName="QLCDTModel.HDTC">
+            <EntityTypeMapping TypeName="QL_CDTModel.HDTC">
               <MappingFragment StoreEntitySet="HDTC">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDSIM" ColumnName="IDSIM" />
@@ -397,9 +398,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KHACHHANGs">
-            <EntityTypeMapping TypeName="QLCDTModel.KHACHHANG">
+            <EntityTypeMapping TypeName="QL_CDTModel.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TENKH" ColumnName="TENKH" />
                 <ScalarProperty Name="CMND" ColumnName="CMND" />
@@ -407,11 +407,12 @@
                 <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="THONGTINSIMs">
-            <EntityTypeMapping TypeName="QLCDTModel.THONGTINSIM">
+            <EntityTypeMapping TypeName="QL_CDTModel.THONGTINSIM">
               <MappingFragment StoreEntitySet="THONGTINSIM">
                 <ScalarProperty Name="IDSIM" ColumnName="IDSIM" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
@@ -419,7 +420,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="TINH_HDTC" FunctionName="QLCDTModel.Store.TINH_HDTC" />
+          <FunctionImportMapping FunctionImportName="TINH_HDTC" FunctionName="QL_CDTModel.Store.TINH_HDTC" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

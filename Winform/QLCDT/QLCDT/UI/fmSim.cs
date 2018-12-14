@@ -24,7 +24,12 @@ namespace QLCDT.UI
 
         public void LoadTTS()
         {
-            gvSim.DataSource = SimBUS.LoadSim();
+            string keyword = tbKeyword.Text;
+
+            gvSim.DataSource = SimBUS.LoadSim().Where(x => 
+                keyword.Length == 0 ||
+                x.IDSIM.Contains(keyword)
+            ).ToList();
         }
 
         private void tAdd_Click(object sender, EventArgs e)
@@ -68,6 +73,11 @@ namespace QLCDT.UI
                 int rowIndex = gvSim.SelectedRows[0].Index;
                 selectedID = gvSim.Rows[rowIndex].Cells[0].Value.ToString();
             }
+        }
+
+        private void tbKeyword_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadTTS();
         }
     }
 }

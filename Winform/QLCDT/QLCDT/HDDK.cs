@@ -12,6 +12,7 @@ namespace QLCDT
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class HDDK
     {
@@ -28,5 +29,22 @@ namespace QLCDT
 
         [Browsable(false)]
         public virtual THONGTINSIM THONGTINSIM { get; set; }
+        [Browsable(false)]
+        public System.DateTime NGAYBD { get; set; }
+        [Browsable(false)]
+        public System.DateTime NGAYKT { get; set; }
+
+        [DisplayName("Ngày bắt đầu")]
+        public virtual string NgayBD
+        {
+            get { return NGAYBD.ToString("dd/MM/yyyy"); }
+        }
+
+        [DisplayName("Hạn hợp đồng")]
+        public virtual string NgayKT
+        {
+            get { return NGAYKT.ToString("dd/MM/yyyy"); }
+        }
+
     }
 }

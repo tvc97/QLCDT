@@ -31,6 +31,8 @@
             this.tDelete = new MetroFramework.Controls.MetroTile();
             this.tAdd = new MetroFramework.Controls.MetroTile();
             this.gvSim = new System.Windows.Forms.DataGridView();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.tbKeyword = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvSim)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,11 +80,31 @@
             this.gvSim.Size = new System.Drawing.Size(709, 303);
             this.gvSim.TabIndex = 6;
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(352, 146);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(130, 19);
+            this.metroLabel1.TabIndex = 8;
+            this.metroLabel1.Text = "Từ khóa tìm kiếm:";
+            // 
+            // tbKeyword
+            // 
+            this.tbKeyword.Location = new System.Drawing.Point(488, 142);
+            this.tbKeyword.Name = "tbKeyword";
+            this.tbKeyword.Size = new System.Drawing.Size(254, 23);
+            this.tbKeyword.TabIndex = 7;
+            this.tbKeyword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbKeyword_KeyUp);
+            // 
             // fmSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(765, 527);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.tbKeyword);
             this.Controls.Add(this.gvSim);
             this.Controls.Add(this.tDelete);
             this.Controls.Add(this.tAdd);
@@ -90,6 +112,7 @@
             this.Text = "Danh sách sim";
             ((System.ComponentModel.ISupportInitialize)(this.gvSim)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -97,5 +120,7 @@
         private MetroFramework.Controls.MetroTile tDelete;
         private MetroFramework.Controls.MetroTile tAdd;
         private System.Windows.Forms.DataGridView gvSim;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTextBox tbKeyword;
     }
 }

@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLCDT.DAO
+namespace QL_CDT.DAO
 {
     class HopDongDangKyDAO
     {
-        QLCDTEntities db = new QLCDTEntities();
+        QL_CDTEntities db = new QL_CDTEntities();
         HDDK hd = new HDDK();
 
         public static List<HDDK> LoadHDDK()
         {
-            QLCDTEntities db = new QLCDTEntities();
+            QL_CDTEntities db = new QL_CDTEntities();
             var result = (
                 from t in db.HDDKs
                 select new

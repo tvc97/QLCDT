@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLCDT.DAO
+namespace QL_CDT.DAO
 {
     class ThanhToanDAO
     {
-        QLCDTEntities db = new QLCDTEntities();
+        QL_CDTEntities db = new QL_CDTEntities();
         HDTC tts = new HDTC();
 
         public static List<HDTC> LoadThanhToan()
         {
-            QLCDTEntities db = new QLCDTEntities();
+            QL_CDTEntities db = new QL_CDTEntities();
             var result = (
                 from t in db.HDTCs
                 select new

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QLCDT.DAO;
+using QL_CDT.DAO;
 
-namespace QLCDT.BUS
+namespace QL_CDT.BUS
 {
     public class HopDongDangKyBUS
     {
